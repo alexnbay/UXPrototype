@@ -2,15 +2,12 @@
 
 A new Flutter project.
 
-## Getting Started
+## How To Test
 
-This project is a starting point for a Flutter application.
+Create a new Flutter project in IntelliJ IDEA.
+Replace the main.dart file in the newly created project with the main.dart file in this repository.
+Replace the pubspec.yaml file in your project with the pubspec.yaml from this repository.
+Download the images folder from this repository, and add it to your project directory.
+Run using your chosen emulator.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*Note: this repository contains everything from my Flutter project in IntelliJ IDEA CE. I have it set up for iPhone, and I don't know if it would work with Android as well.
