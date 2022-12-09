@@ -130,10 +130,10 @@ class _SettingsRouteState extends State<SettingsRoute> {
             Row(
               children: [
               const SizedBox(width:20),
-              getColorBoxes(const Color(0xff102360),
+              getColorBoxes(const Color(0xff261060),
                   const Color(0xff7621ac),
                   const Color(0xffb157a9),
-                  const Color(0xfffde8e8)),
+                  const Color(0xffFDEDF3)),
               const SizedBox(width: 20),
               getColorBoxes(const Color(0xff102360),
                   const Color(0xff5F4DC1),
