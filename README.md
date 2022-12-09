@@ -5,7 +5,7 @@ A new Flutter project.
 ## How To Test
 
 Create a new Flutter project in IntelliJ IDEA.
-Replace the main.dart file in the newly created project with the main.dart file in this repository.
+Replace the main.dart file in the newly created project with the main.dart file in this repository, and download and add settings.dart, home.dart, and graph.dart into the lib folder.
 Replace the pubspec.yaml file in your project with the pubspec.yaml from this repository.
 Download the images folder from this repository, and add it to your project directory.
 Run using your chosen emulator.
