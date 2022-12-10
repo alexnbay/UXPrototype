@@ -13,6 +13,11 @@ class SettingsRoute extends StatefulWidget{
 
 class _SettingsRouteState extends State<SettingsRoute> {
   int graphColumnsLocal = HomePageState.graphColumns;
+  double corrector = 1.0;
+
+  double correct(int n){
+    return (n * corrector);
+  }
 
   void updateGraphColumns(int value){
     setState((){
@@ -32,31 +37,31 @@ class _SettingsRouteState extends State<SettingsRoute> {
         });
       },
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(correct(30)),
           child: Container(
-              width: 180,
-              height: 200,
+              width: correct(180),
+              height: correct(200),
               color: dark,
               child: Column(children: [
                 ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(correct(30)),
                     child: Container(
-                        width: 180,
-                        height: 150,
+                        width: correct(180),
+                        height: correct(150),
                         color: mid,
                         child: Column(children: [
                           ClipRRect(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(correct(30)),
                               child: Container(
-                                  width: 180,
-                                  height: 100,
+                                  width: correct(180),
+                                  height: correct(100),
                                   color: dull,
                                   child: Column(children: [
                                     ClipRRect(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(correct(30)),
                                         child: Container(
-                                          width: 180,
-                                          height: 50,
+                                          width: correct(180),
+                                          height: correct(50),
                                           color: light,
                                         )
                                     )
@@ -74,9 +79,11 @@ class _SettingsRouteState extends State<SettingsRoute> {
     );
   }
 
-
   @override
   Widget build(BuildContext context){
+    corrector = MediaQuery.of(context).size.width / 414.0;
+
+
     return Scaffold(
       backgroundColor: HomePageState.lightColor,
       appBar: AppBar(
@@ -86,16 +93,16 @@ class _SettingsRouteState extends State<SettingsRoute> {
       ),
       body: Column(
           children: [
-            const SizedBox(height: 20),
-            const Text('Number of Bars in each Graph', style: TextStyle(fontSize: 21)),
-            const SizedBox(height: 20),
-            Row(children: const [
-              SizedBox(width: 20),
-              Text('5'),
-              SizedBox(width: 165),
-              Text('10'),
-              SizedBox(width: 165),
-              Text('15')
+            SizedBox(height: correct(20)),
+            Text('Number of Bars in each Graph', style: TextStyle(fontSize: correct(21))),
+            SizedBox(height: correct(20)),
+            Row(children: [
+              SizedBox(width: correct(20)),
+              const Text('5'),
+              SizedBox(width: correct(165)),
+              const Text('10'),
+              SizedBox(width: correct(165)),
+              const Text('15')
             ],),
             Slider(
               value: graphColumnsLocal.toDouble(),
@@ -109,32 +116,32 @@ class _SettingsRouteState extends State<SettingsRoute> {
                 });
               },
             ),
-            const SizedBox(height: 40),
-            const Text('Choose a Color Scheme', style: TextStyle(fontSize: 21)),
-            const SizedBox(height:30),
+            SizedBox(height: correct(40)),
+            Text('Choose a Color Scheme', style: TextStyle(fontSize: correct(21))),
+            SizedBox(height: correct(30)),
             Row(
               children: [
-                const SizedBox(width:20),
+                SizedBox(width:correct(20)),
                 getColorBoxes(const Color(0xff1c286c),
                   const Color(0xff3243a2), 
                   const Color(0xff7580be),
                   const Color(0xffefeff8)),
-                const SizedBox(width: 20),
+                SizedBox(width: correct(20)),
                 getColorBoxes(const Color(0xff712828),
                     const Color(0xff9b3333),
                     const Color(0xffbe6b6b),
                     const Color(0xfffde8e8)),
               ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: correct(20)),
             Row(
               children: [
-              const SizedBox(width:20),
+              SizedBox(width:correct(20)),
               getColorBoxes(const Color(0xff261060),
                   const Color(0xff7621ac),
                   const Color(0xffb157a9),
                   const Color(0xffFDEDF3)),
-              const SizedBox(width: 20),
+              SizedBox(width: correct(20)),
               getColorBoxes(const Color(0xff102360),
                   const Color(0xff5F4DC1),
                   const Color(0xffD9A06F),
@@ -147,7 +154,7 @@ class _SettingsRouteState extends State<SettingsRoute> {
           ]
       ),
       bottomNavigationBar: BottomNavigationBar(
-          iconSize: 48,
+          iconSize: correct(48),
           backgroundColor: HomePageState.darkColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

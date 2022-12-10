@@ -5,6 +5,7 @@ import 'graph.dart';
 
 void main() {
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       GraphsRoute.routeName: (BuildContext context) => const GraphsRoute(),
       SettingsRoute.routeName: (BuildContext context) => const SettingsRoute(),
     };
+
 
     return MaterialApp(
       title: 'Music Data',

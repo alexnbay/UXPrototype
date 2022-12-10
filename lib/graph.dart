@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'dart:math';
 import 'home.dart';
 import 'settings.dart';
-import 'graph.dart';
 
 
 
@@ -18,8 +16,19 @@ class GraphsRoute extends StatefulWidget{
 
 class _GraphsRouteState extends State<GraphsRoute>{
 
+  double corrector = 1.0;
+
+  double correct(int n){
+    return (n * corrector);
+  }
+
+  double correctDouble(double n){
+    return (n * corrector);
+  }
+
+
   List<BarChartGroupData> getGenresBars(int n){
-    double barWidth = 10.0 + 20.0 * ((15.0-n) / 15.0);
+    double barWidth = correctDouble(10.0 + 20.0 * ((15.0-n) / 15.0));
 
     List<BarChartGroupData> allBars = [
       BarChartGroupData(
@@ -275,7 +284,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
   }
 
   List<BarChartGroupData> getDescriptionsBars(int n){
-    double barWidth = 10.0 + 20.0 * ((15.0-n) / 15.0);
+    double barWidth = correctDouble(10.0 + 20.0 * ((15.0-n) / 15.0));
 
     List<BarChartGroupData> allBars = [
       BarChartGroupData(
@@ -531,7 +540,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
   }
 
   List<BarChartGroupData> getSkippedBars(int n){
-    double barWidth = 10.0 + 20.0 * ((15.0-n) / 15.0);
+    double barWidth = correctDouble(10.0 + 20.0 * ((15.0-n) / 15.0));
 
     List<BarChartGroupData> allBars = [
       BarChartGroupData(
@@ -793,7 +802,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
           enabled: true,
           touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: Colors.grey,
-            tooltipMargin: 8,
+            tooltipMargin: correct(8),
             getTooltipItem: (BarChartGroupData group, int groupIndex, BarChartRodData rod, int rodIndex) {
               String text;
               switch(group.x){
@@ -831,7 +840,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
         bottomTitles: AxisTitles(
             sideTitles: SideTitles(
                 showTitles: false,
-                reservedSize: 30,
+                reservedSize: correct(30),
                 getTitlesWidget: (double value, TitleMeta meta){
                   var style = TextStyle(                                      //MAY CAUSE ERROR; THIS WAS CONST
                       color: HomePageState.midDullColor,
@@ -864,7 +873,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 45,
+              reservedSize: correct(45),
               interval: 1,
               getTitlesWidget: (double value, TitleMeta meta){
                 var style = TextStyle(
@@ -886,7 +895,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
                 } else {
                   return Container();
                 }
-                return SideTitleWidget(axisSide: meta.axisSide, space: 10, child: Text(text, style: style));
+                return SideTitleWidget(axisSide: meta.axisSide, space: correct(10), child: Text(text, style: style));
               }
           ),
         ),
@@ -914,7 +923,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
           enabled: true,
           touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: Colors.grey,
-            tooltipMargin: 8,
+            tooltipMargin: correct(8),
             getTooltipItem: (BarChartGroupData group, int groupIndex, BarChartRodData rod, int rodIndex) {
               String text;
               switch(group.x){
@@ -952,7 +961,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
         bottomTitles: AxisTitles(
             sideTitles: SideTitles(
                 showTitles: false,
-                reservedSize: 30,
+                reservedSize: correct(30),
                 getTitlesWidget: (double value, TitleMeta meta){
                   var style = TextStyle(
                       color: HomePageState.midDullColor,
@@ -978,14 +987,14 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     case 14: text = 'lonely'; break;
                     default: text = 'extra column'; break;
                   }
-                  return SideTitleWidget(axisSide: meta.axisSide, space: 4, child: Text(text, style: style));
+                  return SideTitleWidget(axisSide: meta.axisSide, space: correct(4), child: Text(text, style: style));
                 }
             )
         ),
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 45,
+              reservedSize: correct(45),
               interval: 1,
               getTitlesWidget: (double value, TitleMeta meta){
                 var style = TextStyle(
@@ -1007,7 +1016,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
                 } else {
                   return Container();
                 }
-                return SideTitleWidget(axisSide: meta.axisSide, space: 10, child: Text(text, style: style));
+                return SideTitleWidget(axisSide: meta.axisSide, space: correct(10), child: Text(text, style: style));
               }
           ),
         ),
@@ -1035,7 +1044,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
           enabled: true,
           touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: Colors.grey,
-            tooltipMargin: 8,
+            tooltipMargin: correct(8),
             getTooltipItem: (BarChartGroupData group, int groupIndex, BarChartRodData rod, int rodIndex) {
               String text;
               switch(group.x){
@@ -1073,7 +1082,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
         bottomTitles: AxisTitles(
             sideTitles: SideTitles(
                 showTitles: false,
-                reservedSize: 30,
+                reservedSize: correct(30),
                 getTitlesWidget: (double value, TitleMeta meta){
                   var style = TextStyle(
                       color: HomePageState.midDullColor,
@@ -1099,14 +1108,14 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     case 14: text = '"A Far Green Country"'; break;
                     default: text = 'extra column'; break;
                   }
-                  return SideTitleWidget(axisSide: meta.axisSide, space: 4, child: Text(text, style: style));
+                  return SideTitleWidget(axisSide: meta.axisSide, space: correct(4), child: Text(text, style: style));
                 }
             )
         ),
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 45,
+              reservedSize: correct(45),
               interval: 1,
               getTitlesWidget: (double value, TitleMeta meta){
                 var style = TextStyle(
@@ -1128,7 +1137,7 @@ class _GraphsRouteState extends State<GraphsRoute>{
                 } else {
                   return Container();
                 }
-                return SideTitleWidget(axisSide: meta.axisSide, space: 10, child: Text(text, style: style));
+                return SideTitleWidget(axisSide: meta.axisSide, space: correct(10), child: Text(text, style: style));
               }
           ),
         ),
@@ -1151,46 +1160,46 @@ class _GraphsRouteState extends State<GraphsRoute>{
 
   Widget getGenresGraph(){
     return ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(correct(40)),
         child: SizedBox(
-            height: 500,
-            width: 380,
+            height: correct(500),
+            width: correct(380),
             child: Container(
                 color: HomePageState.darkColor,
                 child: Column(
                     children: [
-                      const SizedBox(height: 20),
-                      const Text("Top Genres", style: TextStyle(color: Colors.white, fontSize: 30)),
-                      const SizedBox(height: 1),
-                      const Text("By Play Count", style: TextStyle(color: Colors.white, fontSize: 18, )),
-                      const SizedBox(height: 5),
+                      SizedBox(height: correct(20)),
+                      Text("Top Genres", style: TextStyle(color: Colors.white, fontSize: correct(30))),
+                      SizedBox(height: correct(1)),
+                      Text("By Play Count", style: TextStyle(color: Colors.white, fontSize: correct(18), )),
+                      SizedBox(height: correct(5)),
                       Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(correct(20)),
                             child: BarChart(genresChartData()),
                           )
                       ),
-                      const SizedBox(height: 10),
-                      const Text("1. Indie Rock", style: TextStyle(color: Colors.white, fontSize: 26)),
-                      const SizedBox(height: 10),
+                      SizedBox(height: correct(10)),
+                      Text("1. Indie Rock", style: TextStyle(color: Colors.white, fontSize: correct(26))),
+                      SizedBox(height: correct(10)),
                       Row(
-                          children: const [
-                            SizedBox(width: 60),
-                            Text("2. Indie Folk", style: TextStyle(color: Colors.white, fontSize: 21)),
-                            SizedBox(width: 20),
-                            Text("3. Singer-S...", style: TextStyle(color: Colors.white, fontSize: 21)),
+                          children: [
+                            SizedBox(width: correct(60)),
+                            Text("2. Indie Folk", style: TextStyle(color: Colors.white, fontSize: correct(21))),
+                            SizedBox(width: correct(20)),
+                            Text("3. Singer-S...", style: TextStyle(color: Colors.white, fontSize: correct(21))),
                           ]
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: correct(10)),
                       Row(
-                          children: const [
-                            SizedBox(width: 60),
-                            Text("4. Art Pop", style: TextStyle(color: Colors.white, fontSize: 21)),
-                            SizedBox(width: 40),
-                            Text("5. Indie Pop", style: TextStyle(color: Colors.white, fontSize: 21)),
+                          children: [
+                            SizedBox(width: correct(60)),
+                            Text("4. Art Pop", style: TextStyle(color: Colors.white, fontSize: correct(21))),
+                            SizedBox(width: correct(40)),
+                            Text("5. Indie Pop", style: TextStyle(color: Colors.white, fontSize: correct(21))),
                           ]
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: correct(30)),
                     ]
                 )
             )
@@ -1200,46 +1209,46 @@ class _GraphsRouteState extends State<GraphsRoute>{
 
   Widget getDescriptionsGraph(){
     return ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(correct(40)),
         child: SizedBox(
-            height: 500,
-            width: 380,
+            height: correct(500),
+            width: correct(380),
             child: Container(
                 color: HomePageState.darkColor,
                 child: Column(
                     children: [
-                      const SizedBox(height: 20),
-                      const Text("Top Descriptors", style: TextStyle(color: Colors.white, fontSize: 30)),
-                      const SizedBox(height: 1),
-                      const Text("By Play Count", style: TextStyle(color: Colors.white, fontSize: 18, )),
-                      const SizedBox(height: 5),
+                      SizedBox(height: correct(20)),
+                      Text("Top Descriptors", style: TextStyle(color: Colors.white, fontSize: correct(30))),
+                      SizedBox(height: correct(1)),
+                      Text("By Play Count", style: TextStyle(color: Colors.white, fontSize: correct(18), )),
+                      SizedBox(height: correct(5)),
                       Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(correct(20)),
                             child: BarChart(descriptionsChartData()),
                           )
                       ),
-                      const SizedBox(height: 10),
-                      const Text("1. melodic", style: TextStyle(color: Colors.white, fontSize: 26)),
-                      const SizedBox(height: 10),
+                      SizedBox(height: correct(10)),
+                      Text("1. melodic", style: TextStyle(color: Colors.white, fontSize: correct(26))),
+                      SizedBox(height: correct(10)),
                       Row(
-                          children: const [
-                            SizedBox(width: 30),
-                            Text("2. melancholic", style: TextStyle(color: Colors.white, fontSize: 21)),
-                            SizedBox(width: 30),
-                            Text("3. bittersweet", style: TextStyle(color: Colors.white, fontSize: 21)),
+                          children: [
+                            SizedBox(width: correct(30)),
+                            Text("2. melancholic", style: TextStyle(color: Colors.white, fontSize: correct(21))),
+                            SizedBox(width: correct(30)),
+                            Text("3. bittersweet", style: TextStyle(color: Colors.white, fontSize: correct(21))),
                           ]
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: correct(10)),
                       Row(
-                          children: const [
-                            SizedBox(width: 30),
-                            Text("4. introspective", style: TextStyle(color: Colors.white, fontSize: 21)),
-                            SizedBox(width: 20),
-                            Text("5. atmospheric", style: TextStyle(color: Colors.white, fontSize: 21)),
+                          children: [
+                            SizedBox(width: correct(30)),
+                            Text("4. introspective", style: TextStyle(color: Colors.white, fontSize: correct(21))),
+                            SizedBox(width: correct(20)),
+                            Text("5. atmospheric", style: TextStyle(color: Colors.white, fontSize: correct(21))),
                           ]
                       ),
-                      const SizedBox(height: 30),
+                     SizedBox(height: correct(30)),
                     ]
                 )
             )
@@ -1249,46 +1258,46 @@ class _GraphsRouteState extends State<GraphsRoute>{
 
   Widget getSkippedSongsGraph(){
     return ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(correct(40)),
         child: SizedBox(
-            height: 500,
-            width: 380,
+            height: correct(500),
+            width: correct(380),
             child: Container(
                 color: HomePageState.darkColor,
                 child: Column(
                     children: [
-                      const SizedBox(height: 20),
-                      const Text("Most Skipped Songs", style: TextStyle(color: Colors.white, fontSize: 30)),
-                      const SizedBox(height: 1),
-                      const Text("By Skip Count", style: TextStyle(color: Colors.white, fontSize: 18, )),
-                      const SizedBox(height: 5),
+                      SizedBox(height: correct(20)),
+                      Text("Most Skipped Songs", style: TextStyle(color: Colors.white, fontSize: correct(30))),
+                      SizedBox(height: correct(1)),
+                      Text("By Skip Count", style: TextStyle(color: Colors.white, fontSize: correct(18), )),
+                      SizedBox(height: correct(5)),
                       Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(correct(20)),
                             child: BarChart(skippedChartData()),
                           )
                       ),
-                      const SizedBox(height: 10),
-                      const Text("1. The River", style: TextStyle(color: Colors.white, fontSize: 26)),
-                      const SizedBox(height: 10),
+                      SizedBox(height: correct(10)),
+                      Text("1. The River", style: TextStyle(color: Colors.white, fontSize: correct(26))),
+                      SizedBox(height: correct(10)),
                       Row(
-                          children: const [
-                            SizedBox(width: 40),
-                            Text("2. Clavado...", style: TextStyle(color: Colors.white, fontSize: 21)),
-                            SizedBox(width: 38),
-                            Text("3. Hate Me", style: TextStyle(color: Colors.white, fontSize: 21)),
+                          children: [
+                            SizedBox(width: correct(40)),
+                            Text("2. Clavado...", style: TextStyle(color: Colors.white, fontSize: correct(21))),
+                            SizedBox(width: correct(38)),
+                            Text("3. Hate Me", style: TextStyle(color: Colors.white, fontSize: correct(21))),
                           ]
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: correct(10)),
                       Row(
-                          children: const [
-                            SizedBox(width: 40),
-                            Text("4. Born to Run", style: TextStyle(color: Colors.white, fontSize: 21)),
-                            SizedBox(width: 20),
-                            Text("5. Waitin' on...", style: TextStyle(color: Colors.white, fontSize: 21)),
+                          children: [
+                            SizedBox(width: correct(40)),
+                            Text("4. Born to Run", style: TextStyle(color: Colors.white, fontSize: correct(21))),
+                            SizedBox(width: correct(20)),
+                            Text("5. Waitin' on...", style: TextStyle(color: Colors.white, fontSize: correct(21))),
                           ]
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: correct(30)),
                     ]
                 )
             )
@@ -1298,34 +1307,34 @@ class _GraphsRouteState extends State<GraphsRoute>{
 
   Widget getAlbumsChart(){
     return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(correct(20)),
         child: SizedBox(
-            width: 380,
-            height: 670,
+            width: correct(380),
+            height: correct(670),
             child: Container(
                 color: HomePageState.midBrightColor,
                 child: Column(
                   children: [
-                    const SizedBox(height: 20),
-                    const Center(
-                      child: Text('Your Favorite Albums', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
+                    SizedBox(height: correct(20)),
+                    Center(
+                      child: Text('Your Favorite Albums', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(28))),
                     ),
                     const Divider(),
-                    const SizedBox(height: 10),
+                    SizedBox(height: correct(10)),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/IAmEasyToFind.png', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/IAmEasyToFind.png', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('I Am Easy to Find', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('I Am Easy to Find', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1335,18 +1344,18 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/CarrieAndLowell.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/CarrieAndLowell.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Carrie and Lowell', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Sufjan Stevens', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('Carrie and Lowell', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Sufjan Stevens', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1356,18 +1365,18 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/ForEmmaForeverAgo.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/ForEmmaForeverAgo.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('For Emma, Forever...', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Bon Iver', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children:  [
+                                    Text('For Emma, Forever...', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Bon Iver', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1377,18 +1386,18 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/UFOF.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/UFOF.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('U.F.O.F', style: TextStyle( color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children:  [
+                                    Text('U.F.O.F', style: TextStyle( color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1398,18 +1407,18 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/Marigold.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/Marigold.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Marigold', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Pinegrove', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('Marigold', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Pinegrove', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1425,33 +1434,33 @@ class _GraphsRouteState extends State<GraphsRoute>{
 
   Widget getArtistsChart(){
     return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(correct(20)),
         child: SizedBox(
-            width: 380,
-            height: 670,
+            width: correct(380),
+            height: correct(670),
             child: Container(
                 color: HomePageState.midBrightColor,
                 child: Column(
                   children: [
-                    const SizedBox(height: 20),
-                    const Center(
-                      child: Text('Your Favorite Artists', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
+                    SizedBox(height: correct(20)),
+                    Center(
+                      child: Text('Your Favorite Artists', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(28))),
                     ),
                     const Divider(),
-                    const SizedBox(height: 10),
+                    SizedBox(height: correct(10)),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/TheNational.jpeg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/TheNational.jpeg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
+                                  children:  [
+                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
                                   ],
                                 )
                             )
@@ -1461,17 +1470,17 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                         SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/BenHoward.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/BenHoward.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Ben Howard', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
+                                  children: [
+                                    Text('Ben Howard', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
                                   ],
                                 )
                             )
@@ -1481,17 +1490,17 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/BigThief.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/BigThief.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
+                                  children: [
+                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
                                   ],
                                 )
                             )
@@ -1501,17 +1510,17 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/BonIver.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/BonIver.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Bon Iver', style: TextStyle( color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
+                                  children: [
+                                    Text('Bon Iver', style: TextStyle( color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
                                   ],
                                 )
                             )
@@ -1521,17 +1530,17 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/Waxahatchee.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/Waxahatchee.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Waxahatchee', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
+                                  children: [
+                                    Text('Waxahatchee', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
                                   ],
                                 )
                             )
@@ -1547,35 +1556,35 @@ class _GraphsRouteState extends State<GraphsRoute>{
 
   Widget getSongsChart(){
     return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(correct(20)),
         child: SizedBox(
-            width: 380,
-            height: 670,
+            width: correct(380),
+            height: correct(670),
             child: Container(
                 color: HomePageState.midBrightColor,
                 child: Column(
                   children: [
-                    const SizedBox(height: 20),
-                    const Center(
-                      child: Text('Your Favorite Songs', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
+                    SizedBox(height: correct(20)),
+                    Center(
+                      child: Text('Your Favorite Songs', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(28))),
                     ),
                     const Divider(),
-                    const SizedBox(height: 10),
+                    SizedBox(height: correct(10)),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/UFOF.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/UFOF.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('UFOF', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18)),
-                                    Text('U.F.O.F', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('UFOF', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18))),
+                                    Text('U.F.O.F', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1585,19 +1594,19 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/Marigold.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/Marigold.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Spiral', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Pinegrove', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18)),
-                                    Text('Marigold', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('Spiral', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Pinegrove', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18))),
+                                    Text('Marigold', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1607,19 +1616,19 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/UFOF.jpg', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/UFOF.jpg', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Contact', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18)),
-                                    Text('U.F.O.F', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('Contact', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('Big Thief', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18))),
+                                    Text('U.F.O.F', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1629,19 +1638,19 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/IAmEasyToFind.png', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/IAmEasyToFind.png', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Light Years', style: TextStyle( color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18)),
-                                    Text('I Am Easy to Find', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children:  [
+                                    Text('Light Years', style: TextStyle( color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18))),
+                                    Text('I Am Easy to Find', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1651,19 +1660,19 @@ class _GraphsRouteState extends State<GraphsRoute>{
                     const Divider(),
                     Row(
                       children: [
-                        const SizedBox(width: 20),
+                        SizedBox(width: correct(20)),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('images/IAmEasyToFind.png', height: 100, width: 100),
+                          borderRadius: BorderRadius.circular(correct(20)),
+                          child: Image.asset('images/IAmEasyToFind.png', height: correct(100), width: correct(100)),
                         ),
                         SizedBox(
-                            width: 250,
+                            width: correct(250),
                             child: Center(
                                 child: Column(
-                                  children: const [
-                                    Text('Hey Rosey', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 21)),
-                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18)),
-                                    Text('I Am Easy to Find', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: 18))
+                                  children: [
+                                    Text('Hey Rosey', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: correct(21))),
+                                    Text('The National', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18))),
+                                    Text('I Am Easy to Find', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w200, fontSize: correct(18)))
                                   ],
                                 )
                             )
@@ -1678,9 +1687,10 @@ class _GraphsRouteState extends State<GraphsRoute>{
   }
 
 
-
   @override
   Widget build(BuildContext context){
+    corrector = MediaQuery.of(context).size.width / 414.0;
+
     return Scaffold(
       backgroundColor: HomePageState.lightColor,
       appBar: AppBar(
@@ -1689,25 +1699,25 @@ class _GraphsRouteState extends State<GraphsRoute>{
           automaticallyImplyLeading: false
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(correct(20)),
         child: ListView(
             children:[
               getGenresGraph(),
-              const SizedBox(height: 20),
+              SizedBox(height: correct(20)),
               getDescriptionsGraph(),
-              const SizedBox(height: 20),
+              SizedBox(height: correct(20)),
               getSkippedSongsGraph(),
-              const SizedBox(height: 20),
+              SizedBox(height: correct(20)),
               getArtistsChart(),
-              const SizedBox(height: 20),
+              SizedBox(height: correct(20)),
               getAlbumsChart(),
-              const SizedBox(height: 20),
+              SizedBox(height: correct(20)),
               getSongsChart()
             ]
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          iconSize: 48,
+          iconSize: correct(48),
           backgroundColor: HomePageState.darkColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
